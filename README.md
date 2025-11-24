@@ -17,46 +17,52 @@ Supports basic and advanced operations via remote procedure calls (RPC), with de
 
 ## 🚀 Project Overview
 
-This project demonstrates how distributed systems communicate using gRPC and Protocol Buffers.  
-It includes a client-server architecture, Dockerized containers, and a distributed demo across two laptops.
+This project implements a remote calculator service using gRPC in Python.
+It demonstrates how distributed systems communicate through Remote Procedure Calls (RPCs) and exchange data using Protocol Buffers (protobufs).
 
-The calculator supports:
-- Basic arithmetic operations
-- Extended mathematical functions
-- Robust error handling
-- Request logging
-- Optional asynchronous server using `grpc.aio` (bonus)
+The project supports basic arithmetic operations, extended mathematical operations, and robust error handling.
 
----
+🧩 Features
+✅ Supported Operations
 
-## 🧩 Features
+Addition (+)
 
-### ✅ Supported Operations
-- Addition (+)
-- Subtraction (−)
-- Multiplication (×)
-- Division (÷)
-- Modulus (%)
-- Power (^)
-- Square Root (√)
-- Logarithm (log)
-- Sine (sin)
-- Cosine (cos)
+Subtraction (−)
 
-### ✅ Additional Functionalities
-- Exception-safe input validation
-- Logging of all client requests and results in `server_log.txt`
-- Asynchronous server using `grpc.aio` (bonus)
-- Clean, modular Python code
+Multiplication (×)
 
----
+Division (÷)
 
-## ⚙️ Requirements
+Modulus (%)
 
-- Python 3.8+  
-- Dependencies:
-  ```bash
-  pip install grpcio grpcio-tools
+Power (^)
+
+Square Root (√)
+
+✅ Additional Functionalities
+
+Logarithm (log)
+
+Sine (sin)
+
+Cosine (cos)
+
+Robust error handling (division by zero, invalid inputs, negative sqrt, etc.)
+
+Logging of all client requests and results in server_log.txt
+
+Clean, modular Python code
+
+Optional asynchronous server using grpc.aio for improved performance (Bonus)
+
+⚙️ Requirements
+
+Python: 3.8 or higher
+
+Dependencies:
+
+pip install grpcio grpcio-tools
+
 🛠️ Project Structure
 Code
 grpc_calculator/
@@ -152,4 +158,6 @@ zip -r grpc_calculator.zip *
 Submit via email or platform as required.
 
 🧾 License
-This project is provided for academic use only as part of the Distributed Systems coursework. Unauthorized distribution or reuse outside coursework is prohibited.
+
+This project is provided for academic use only as part of the Distributed Systems coursework.
+Unauthorized distribution or reuse outside coursework is prohibited.
