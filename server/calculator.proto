@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+service Calculator {
+  rpc Add (CalcRequest) returns (CalcResponse);
+  rpc Subtract (CalcRequest) returns (CalcResponse);
+  rpc Multiply (CalcRequest) returns (CalcResponse);
+  rpc Divide (CalcRequest) returns (CalcResponse);
+  rpc Modulus (CalcRequest) returns (CalcResponse);
+  rpc Power (CalcRequest) returns (CalcResponse);
+  rpc SquareRoot (SingleRequest) returns (CalcResponse);
+  rpc Log (SingleRequest) returns (CalcResponse);
+  rpc Sin (SingleRequest) returns (CalcResponse);
+  rpc Cos (SingleRequest) returns (CalcResponse);
+}
+
+message CalcRequest {
+  double number1 = 1;
+  double number2 = 2;
+}
+
+message SingleRequest {
+  double number = 1;
+}
+
+message CalcResponse {
+  double result = 1;
+}

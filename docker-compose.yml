@@ -1,0 +1,19 @@
+services:
+  calculator_server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.server
+    container_name: calculator_server
+    ports:
+      - "50051:50051"
+
+  calculator_client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.client
+    container_name: calculator_client
+    depends_on:
+      - calculator_server
+    stdin_open: true
+    tty: true
+
