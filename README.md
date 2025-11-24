@@ -1,59 +1,64 @@
-🧮 gRPC Calculator Project
+# 🧮 gRPC Calculator
 
-Course: Distributed Systems
-Topic: Remote Procedure Calls (RPC) with gRPC
-Language: Python 3.8+
-Author: Abdel Hady Chakaroun
+A distributed calculator application built with Python and gRPC.  
+Supports basic and advanced operations via remote procedure calls (RPC), with deployment on Docker and Docker Hub.
 
-🚀 Project Overview
+---
 
-This project implements a remote calculator service using gRPC in Python.
-It demonstrates how distributed systems communicate through Remote Procedure Calls (RPCs) and exchange data using Protocol Buffers (protobufs).
+## 📚 Course Info
 
-The project supports basic arithmetic operations, extended mathematical operations, and robust error handling.
+- **Course**: Distributed Systems  
+- **Topic**: Remote Procedure Calls (RPC) with gRPC  
+- **Author**: Abdel Hady Chakaroun  
+- **University**: Lebanese University  
+- **Date**: 24/11/2025  
 
-🧩 Features
-✅ Supported Operations
+---
 
-Addition (+)
+## 🚀 Project Overview
 
-Subtraction (−)
+This project demonstrates how distributed systems communicate using gRPC and Protocol Buffers.  
+It includes a client-server architecture, Dockerized containers, and a distributed demo across two laptops.
 
-Multiplication (×)
+The calculator supports:
+- Basic arithmetic operations
+- Extended mathematical functions
+- Robust error handling
+- Request logging
+- Optional asynchronous server using `grpc.aio` (bonus)
 
-Division (÷)
+---
 
-Modulus (%)
+## 🧩 Features
 
-Power (^)
+### ✅ Supported Operations
+- Addition (+)
+- Subtraction (−)
+- Multiplication (×)
+- Division (÷)
+- Modulus (%)
+- Power (^)
+- Square Root (√)
+- Logarithm (log)
+- Sine (sin)
+- Cosine (cos)
 
-Square Root (√)
+### ✅ Additional Functionalities
+- Exception-safe input validation
+- Logging of all client requests and results in `server_log.txt`
+- Asynchronous server using `grpc.aio` (bonus)
+- Clean, modular Python code
 
-✅ Additional Functionalities
+---
 
-Logarithm (log)
+## ⚙️ Requirements
 
-Sine (sin)
-
-Cosine (cos)
-
-Robust error handling (division by zero, invalid inputs, negative sqrt, etc.)
-
-Logging of all client requests and results in server_log.txt
-
-Clean, modular Python code
-
-Optional asynchronous server using grpc.aio for improved performance (Bonus)
-
-⚙️ Requirements
-
-Python: 3.8 or higher
-
-Dependencies:
-
-pip install grpcio grpcio-tools
-
+- Python 3.8+  
+- Dependencies:
+  ```bash
+  pip install grpcio grpcio-tools
 🛠️ Project Structure
+Code
 grpc_calculator/
 │
 ├── calculator.proto         # Service definition
@@ -61,102 +66,90 @@ grpc_calculator/
 ├── calculator_pb2_grpc.py   # Auto-generated from proto
 ├── server.py                # Synchronous server
 ├── server_async.py          # Asynchronous server (Bonus)
-├── client.py
+├── client.py                # gRPC client
 ├── server_log.txt           # Logs all requests and results
+├── Dockerfile               # Container setup
+├── docker-compose.yml       # Local orchestration
 ├── README.md
-└── venv/                    # Virtual environment
-
-🧠 How to Run
-1️⃣ Create and activate a virtual environment
+└── .gitignore               # Git exclusions
+🧠 How to Run Locally
+1️⃣ Create and activate virtual environment
+bash
 python -m venv venv
 venv\Scripts\activate   # Windows
 source venv/bin/activate # macOS/Linux
-
 2️⃣ Install dependencies
+bash
 pip install grpcio grpcio-tools
-
-3️⃣ Compile the protobuf file
+3️⃣ Compile protobuf
+bash
 python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. calculator.proto
-
-4️⃣ Run the server
-
-Synchronous version:
-
+4️⃣ Run server
+bash
 python server.py
-
-
-Asynchronous version (Bonus):
-
-python server_async.py
-
-
-Expected output:
-
-🚀 GRPC Calculator Server Running on port 50051
-
-5️⃣ Run the client (in a new terminal)
+5️⃣ Run client
+bash
 python client.py
+🐳 Run with Docker
+Build and run locally
+bash
+docker-compose build
+docker-compose up
+Run from Docker Hub
+bash
+docker run -p 50051:50051 hadychakaroun/grpc-calculator-server:1.0
+docker run -it hadychakaroun/grpc-calculator-client:1.0
+🌍 Distributed Demo
+To demonstrate remote execution across two machines:
 
+Server runs on laptop in Ghazir:
+
+bash
+docker run -p 50051:50051 hadychakaroun/grpc-calculator-server:1.0
+Client runs on friend's laptop in Beirut:
+
+Edit client.py:
+
+python
+channel = grpc.insecure_channel("178.135.23.212:50051")
+Run:
+
+bash
+docker run -it hadychakaroun/grpc-calculator-client:1.0
 🖥 Example Interaction
+Code
 Select operation:
 1. Addition (+)
-2. Subtraction (-)
-3. Multiplication (×)
-4. Division (÷)
-5. Power (^)
-6. Square Root (√)
-7. Modulus (mod)
-8. Logarithm (log)
-9. Sine (sin)
-10. Cosine (cos)
-11. Exit
-
+...
 Enter choice: 5
 Enter first number: 2
 Enter second number: 8
 ➡️ Result: 256.0
-
 🪵 Logging
+All server activity is saved in server_log.txt:
 
-All server activity — including requests, results, and errors — is automatically saved in server_log.txt.
+Code
+2025-11-23 16:12:01 - INFO - Power: 2.0^8.0 = 256.0
+2025-11-23 16:12:10 - WARNING - Divide by zero: 5.0 / 0.0
+✨ Bonus Achieved
+✅ Dockerized client and server
 
-Example log entries:
+✅ Published on Docker Hub
 
-2025-11-23 16:12:01,234 - INFO - Power: 2.0^8.0 = 256.0
-2025-11-23 16:12:10,567 - WARNING - Divide by zero: 5.0 / 0.0
+✅ Distributed demo across two laptops
 
-✨ Bonus Features
+✅ Asynchronous server (grpc.aio)
 
-Extended mathematical operations (%, ^, √, log, sin, cos)
+✅ Logging and error handling
 
-Asynchronous server using grpc.aio
-
-Request logging system
-
-Exception-safe input validation
+✅ Professional documentation and GitHub repo
 
 📦 Submission Instructions
+Compress the project:
 
-Compress the project into a single ZIP archive:
-
+bash
 zip -r grpc_calculator.zip *
-
-
-Then submit the ZIP file via email or the required submission method.
-
-✅ Example Output
-🚀 GRPC Calculator Server Running on port 50051
-Select operation: 6
-Enter number: 25
-➡️ Result: 5.0
-
-🧑‍💻 Author
-
-Name: Abdel Hady Chakaroun
-University: Lebanese University
-Date: 23/11/2025
+Submit via email or platform as required.
 
 🧾 License
-
-This project is provided for academic use only as part of the Distributed Systems coursework.
-Unauthorized distribution or reuse outside coursework is prohibited.
+This project is provided for academic use only as part of the Distributed Systems coursework. Unauthorized distribution or reuse outside coursework is prohibited.
