@@ -63,8 +63,7 @@ Dependencies:
 
 pip install grpcio grpcio-tools
 
-🛠️ Project Structure
-Code
+🛠️ Project Structure Code
 grpc_calculator/
 │
 ├── calculator.proto         # Service definition
@@ -78,6 +77,8 @@ grpc_calculator/
 ├── docker-compose.yml       # Local orchestration
 ├── README.md 
 └── .gitignore               # Git exclusions
+
+
 🧠 How to Run Locally
 1️⃣ Create and activate virtual environment
 bash
@@ -105,6 +106,8 @@ Run from Docker Hub
 bash
 docker run -p 50051:50051 hadychakaroun/grpc-calculator-server:1.0
 docker run -it hadychakaroun/grpc-calculator-client:1.0
+
+
 🌍 Distributed Demo
 To demonstrate remote execution across two machines:
 
@@ -122,6 +125,8 @@ Run:
 
 bash
 docker run -it hadychakaroun/grpc-calculator-client:1.0
+
+
 🖥 Example Interaction
 Code
 Select operation:
