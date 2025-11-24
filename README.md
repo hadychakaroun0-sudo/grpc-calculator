@@ -76,7 +76,7 @@ grpc_calculator/
 ├── server_log.txt           # Logs all requests and results
 ├── Dockerfile               # Container setup
 ├── docker-compose.yml       # Local orchestration
-├── README.md
+├── README.md 
 └── .gitignore               # Git exclusions
 🧠 How to Run Locally
 1️⃣ Create and activate virtual environment
